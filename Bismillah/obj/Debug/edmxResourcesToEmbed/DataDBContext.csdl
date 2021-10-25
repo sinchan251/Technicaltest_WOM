@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TechnicaltestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="m_dukcapil_data">
+    <Key>
+      <PropertyRef Name="m_dukcapil_data_id" />
+    </Key>
+    <Property Name="m_dukcapil_data_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NIK" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="maiden_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birth_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="religion_id" Type="Int32" Nullable="false" />
+    <Property Name="martial_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="m_martial_status" Relationship="Self.FK_m_dukcapil_data_m_martial_status" FromRole="m_dukcapil_data" ToRole="m_martial_status" />
+    <NavigationProperty Name="m_religion" Relationship="Self.FK_m_dukcapil_data_m_religion" FromRole="m_dukcapil_data" ToRole="m_religion" />
+  </EntityType>
+  <EntityType Name="m_martial_status">
+    <Key>
+      <PropertyRef Name="m_martial_status_id" />
+    </Key>
+    <Property Name="m_martial_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="m_martial_status_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="m_dukcapil_data" Relationship="Self.FK_m_dukcapil_data_m_martial_status" FromRole="m_martial_status" ToRole="m_dukcapil_data" />
+  </EntityType>
+  <EntityType Name="m_religion">
+    <Key>
+      <PropertyRef Name="religion_id" />
+    </Key>
+    <Property Name="religion_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="religion_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="m_dukcapil_data" Relationship="Self.FK_m_dukcapil_data_m_religion" FromRole="m_religion" ToRole="m_dukcapil_data" />
+  </EntityType>
+  <EntityType Name="t_dukcapil_check_result">
+    <Key>
+      <PropertyRef Name="t_dukcapil_check_result_id" />
+    </Key>
+    <Property Name="t_dukcapil_check_result_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NIK" Type="Int64" Nullable="false" />
+    <Property Name="check_dtm" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="check_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_m_dukcapil_data_m_martial_status">
+    <End Role="m_martial_status" Type="Self.m_martial_status" Multiplicity="1" />
+    <End Role="m_dukcapil_data" Type="Self.m_dukcapil_data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="m_martial_status">
+        <PropertyRef Name="m_martial_status_id" />
+      </Principal>
+      <Dependent Role="m_dukcapil_data">
+        <PropertyRef Name="martial_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_m_dukcapil_data_m_religion">
+    <End Role="m_religion" Type="Self.m_religion" Multiplicity="1" />
+    <End Role="m_dukcapil_data" Type="Self.m_dukcapil_data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="m_religion">
+        <PropertyRef Name="religion_id" />
+      </Principal>
+      <Dependent Role="m_dukcapil_data">
+        <PropertyRef Name="religion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DukcapilEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="m_dukcapil_data" EntityType="Self.m_dukcapil_data" />
+    <EntitySet Name="m_martial_status" EntityType="Self.m_martial_status" />
+    <EntitySet Name="m_religion" EntityType="Self.m_religion" />
+    <EntitySet Name="t_dukcapil_check_result" EntityType="Self.t_dukcapil_check_result" />
+    <AssociationSet Name="FK_m_dukcapil_data_m_martial_status" Association="Self.FK_m_dukcapil_data_m_martial_status">
+      <End Role="m_martial_status" EntitySet="m_martial_status" />
+      <End Role="m_dukcapil_data" EntitySet="m_dukcapil_data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_m_dukcapil_data_m_religion" Association="Self.FK_m_dukcapil_data_m_religion">
+      <End Role="m_religion" EntitySet="m_religion" />
+      <End Role="m_dukcapil_data" EntitySet="m_dukcapil_data" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TechnicaltestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="m_dukcapil_data">
+    <Key>
+      <PropertyRef Name="m_dukcapil_data_id" />
+    </Key>
+    <Property Name="m_dukcapil_data_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NIK" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="maiden_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birth_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="religion_id" Type="Int32" Nullable="false" />
+    <Property Name="martial_status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_dukcapil_check_result">
+    <Key>
+      <PropertyRef Name="t_dukcapil_check_result_id" />
+    </Key>
+    <Property Name="t_dukcapil_check_result_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="NIK" Nullable="false" Type="Int64" />
+    <Property Name="check_dtm" Nullable="false" Precision="0" Type="DateTime" />
+    <Property Name="check_status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+  </EntityType>
+  <EntityContainer Name="Gassentities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="m_dukcapil_data" EntityType="Self.m_dukcapil_data" />
+    <EntitySet Name="t_dukcapil_check_result" EntityType="Self.t_dukcapil_check_result" />
+  </EntityContainer>
+</Schema>

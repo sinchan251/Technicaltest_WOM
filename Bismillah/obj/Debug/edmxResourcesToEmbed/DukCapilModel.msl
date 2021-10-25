@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TechnicaltestModelStoreContainer" CdmEntityContainer="TechnicaltestEntities">
+    <EntitySetMapping Name="m_dukcapil_data">
+      <EntityTypeMapping TypeName="TechnicaltestModel.m_dukcapil_data">
+        <MappingFragment StoreEntitySet="m_dukcapil_data">
+          <ScalarProperty Name="m_dukcapil_data_id" ColumnName="m_dukcapil_data_id" />
+          <ScalarProperty Name="NIK" ColumnName="NIK" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="maiden_name" ColumnName="maiden_name" />
+          <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="religion_id" ColumnName="religion_id" />
+          <ScalarProperty Name="martial_status" ColumnName="martial_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_dukcapil_check_result">
+      <EntityTypeMapping TypeName="TechnicaltestModel.t_dukcapil_check_result">
+        <MappingFragment StoreEntitySet="t_dukcapil_check_result">
+          <ScalarProperty Name="t_dukcapil_check_result_id" ColumnName="t_dukcapil_check_result_id" />
+          <ScalarProperty Name="NIK" ColumnName="NIK" />
+          <ScalarProperty Name="check_dtm" ColumnName="check_dtm" />
+          <ScalarProperty Name="check_status" ColumnName="check_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
